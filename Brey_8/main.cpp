@@ -1,4 +1,5 @@
 ﻿#include <ctime>
+#include <iomanip>
 #include <iostream>
 
 using namespace std;
@@ -10,6 +11,15 @@ void read_mas(double* mas, int size)
 		cout << "[" << i + 1 << "] = ";
 		cin >> mas[i];
 	}
+}
+
+void write_mas(double* mas, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << setw(3) << setprecision(2) << mas[i] << " ";
+	}
+	cout << "\n";
 }
 
 void randomize(double* mas, int size)
@@ -41,8 +51,8 @@ int main()
 	srand(time(0));
 	setlocale(LC_ALL, "russian");
 
-	cout << "Программу сделала Белевцева Дарья Юрьевна студент группы УМЛ-112\n";
-	cout << "Программа для расчёта ряда чисел\n";
+	cout << "Программу сделала Брей Валерия студент группы УМЛ-112\n";
+	cout << "Программа для рассчёта периода отопления\n";
 
 	int days = 30;
 	double* d_temps = new double[days];
@@ -55,6 +65,10 @@ int main()
 	{
 		randomize(d_temps, days);
 		randomize(n_temps, days);
+		cout << "Дневные температуры: \n";
+		write_mas(d_temps, days);
+		cout << "Ночные температуры: \n";
+		write_mas(n_temps, days);
 	}
 	else
 	{
